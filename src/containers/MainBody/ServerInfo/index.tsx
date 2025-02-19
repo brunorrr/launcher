@@ -57,7 +57,7 @@ const ServerInfo = () => {
 
   return (
     <View style={styles.serverInfoView}>
-      <PlayerList players={selected ? selected.players : []} />
+      <PlayerList playersList={selected ? selected.players : []} playersCount={selected ? selected.playerCount : 0} />
       <View
         style={{
           width: "100%",

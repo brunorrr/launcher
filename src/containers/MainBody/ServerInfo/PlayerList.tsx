@@ -8,7 +8,8 @@ import { useServers } from "../../../states/servers";
 import { useMemo } from "react";
 
 interface IProps {
-  players: Player[];
+  playersList: Player[];
+  playersCount: number;
 }
 
 const PlayerList = (props: IProps) => {
@@ -45,6 +46,28 @@ const PlayerList = (props: IProps) => {
     }
     return "";
   }, [selected?.omp, themeType]);
+
+  if(props.playersCount > 99) {
+    return (
+      <View
+        style={{
+          backgroundColor: theme.itemBackgroundColor,
+          padding: sc(15),
+          paddingTop: sc(15),
+          borderRadius: 5,
+          height: bannerUrl.length ? "46%" : "51%",
+          justifyContent: "center",
+          alignItems: "center", 
+        }}
+      >
+        <Text color={theme.textPrimary}>{t("noPlayersListAvailable")}</Text>
+
+        <Text color={theme.textSecondary} style={{ marginTop: sc(5) }}>
+          {t("serverHasMoreThan99Players")}
+        </Text>
+      </View>
+    );
+  }
 
   const renderPlayer = ({
     item: player,
@@ -123,7 +146,7 @@ const PlayerList = (props: IProps) => {
       >
         <FlatList
           id={themeType === "dark" ? "scroll" : "scroll-light"}
-          data={props.players}
+          data={props.playersList}
           renderItem={renderPlayer}
         />
       </View>

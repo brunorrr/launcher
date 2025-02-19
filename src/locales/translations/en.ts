@@ -101,4 +101,6 @@ export default {
   reconnect: "Reconnect",
   settings_advanced_discord_status_requires_restart:
     "(Requires restarting the game to take action)",
+  noPlayersListAvailable: "No players list available",
+  serverHasMoreThan99Players: "Server has 100 players or more",
 };
